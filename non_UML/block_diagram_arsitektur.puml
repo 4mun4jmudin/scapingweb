@@ -1,0 +1,40 @@
+@startuml
+title Block Diagram Arsitektur Aplikasi
+
+node "Client Browser" {
+    [UI Web Streamlit] as WebUI
+}
+
+node "Local Web Server (Port 8501)" {
+    [Streamlit Application Engine] as StreamlitEngine
+    [Plotly & Wordcloud Rendering] as GraphEngine
+}
+
+node "Python Backend Execution" {
+    [TF-IDF Feature Extractor] as Vectorizer
+    [Naive Bayes Classifier] as ClassifierNB
+    [SVM Classifier] as ClassifierSVM
+}
+
+database "File Storage System" {
+    folder "Model Artifacts" {
+        [nb_model.pkl] as fileNB
+        [svm_model.pkl] as fileSVM
+        [tfidf.pkl] as fileTFIDF
+    }
+    folder "Excel Database" {
+        [data_twitter_terlabeli.xlsx] as fileExcel
+    }
+}
+
+WebUI <--> StreamlitEngine : HTTP / WebSockets
+StreamlitEngine --> GraphEngine : Request rendering
+StreamlitEngine --> Vectorizer : Input text
+Vectorizer --> fileTFIDF : Load
+Vectorizer --> ClassifierNB : Feature vector
+Vectorizer --> ClassifierSVM : Feature vector
+ClassifierNB --> fileNB : Load
+ClassifierSVM --> fileSVM : Load
+StreamlitEngine --> fileExcel : Read data ringkasan
+
+@endum

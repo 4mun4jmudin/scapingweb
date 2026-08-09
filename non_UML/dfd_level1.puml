@@ -1,0 +1,29 @@
+@startuml
+title DFD Level 1 - Analisis Sentimen QRIS & Cashless
+
+left to right direction
+skinparam packageStyle rect
+
+actor "Pengguna (User)" as User
+
+rectangle "1.0\nPreprocessing & Labeling" as P1
+rectangle "2.0\nPelatihan Model" as P2
+rectangle "3.0\nVisualisasi & Simulator" as P3
+
+database "dataTwitter_20000.xlsx" as DB1
+database "data_twitter_terlabeli.xlsx" as DB2
+database "Model Pickle (.pkl)" as DB3
+
+User --> P1 : Input data mentah / raw tweets
+DB1 --> P1 : Ambil raw tweets
+P1 --> DB2 : Simpan data bersih & terlabeli
+
+DB2 --> P2 : Ambil data terlabeli
+P2 --> DB3 : Simpan model (nb, svm, tfidf)
+
+DB3 --> P3 : Load model & vectorizer
+DB2 --> P3 : Load data untuk statistik
+User --> P3 : Input teks live / request menu
+P3 --> User : Tampilkan hasil prediksi & charts
+
+@endum

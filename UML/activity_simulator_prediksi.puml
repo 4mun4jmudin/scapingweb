@@ -1,0 +1,22 @@
+@startuml
+title Activity Diagram - Simulator Prediksi Sentimen Live
+
+|Pengguna|
+start
+:Membuka halaman 'Simulator Prediksi Live';
+:Memasukkan teks opini/tweet ke text area;
+:Menekan tombol 'Prediksi Sentimen';
+
+|Dashboard Streamlit|
+:Melakukan pembersihan teks (Cleansing & Case Folding);
+:Melakukan ekstraksi fitur kata menggunakan Vectorizer TF-IDF;
+:Memuat model classifier Naive Bayes & SVM;
+:Melakukan klasifikasi dengan model Naive Bayes;
+:Melakukan klasifikasi dengan model SVM;
+:Menghitung skor probabilitas/kepercayaan hasil klasifikasi;
+:Menampilkan hasil klasifikasi (Positif/Negatif) dari kedua model ke UI;
+
+|Pengguna|
+:Melihat hasil prediksi sentimen;
+stop
+@endum

@@ -1,0 +1,21 @@
+@startuml
+title Flowchart Sistem Analisis Sentimen QRIS & Cashless
+
+start
+:Pengumpulan Data Twitter (dataTwitter_20000.xlsx);
+:Prapengolahan Data (Case Folding, Cleansing, Lexicon Labeling);
+:Penyimpanan Data Terlabeli (data_twitter_terlabeli.xlsx);
+:Pembagian Data (80% Train, 20% Test);
+:Ekstraksi Fitur TF-IDF (N-Gram 1-2);
+fork
+    :Klasifikasi Naive Bayes (MultinomialNB);
+    :Evaluasi Akurasi Naive Bayes;
+fork again
+    :Klasifikasi SVM (Linear Kernel);
+    :Evaluasi Akurasi SVM;
+end fork
+:Penyimpanan Model & Vectorizer (.pkl);
+:Integrasi Dashboard Streamlit (app.py);
+:Tampilkan Visualisasi & Simulator Sentimen;
+stop
+@endum

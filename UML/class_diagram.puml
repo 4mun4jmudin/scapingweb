@@ -1,0 +1,47 @@
+@startuml
+title Class Diagram - Analisis Sentimen QRIS & Cashless
+
+class PreprocessingScript {
+    + clean_twitter_text(text: String): String
+    + rtp_labeling(text: String): String
+    + main(): void
+}
+
+class ClassificationScript {
+    + main(): void
+}
+
+class StreamlitApp {
+    + load_dataset(): DataFrame
+    + load_models(): Tuple
+    + main(): void
+}
+
+class TfidfVectorizer {
+    + ngram_range: Tuple
+    + max_features: Integer
+    + fit_transform(raw_documents: List): Matrix
+    + transform(raw_documents: List): Matrix
+}
+
+class MultinomialNB {
+    + fit(X: Matrix, y: List): void
+    + predict(X: Matrix): List
+}
+
+class SVC {
+    + kernel: String
+    + fit(X: Matrix, y: List): void
+    + predict(X: Matrix): List
+}
+
+PreprocessingScript ..> TfidfVectorizer : "mempersiapkan data"
+ClassificationScript --> TfidfVectorizer : "menggunakan"
+ClassificationScript --> MultinomialNB : "melatih"
+ClassificationScript --> SVC : "melatih"
+
+StreamlitApp --> TfidfVectorizer : "memuat tfidf.pkl"
+StreamlitApp --> MultinomialNB : "memuat nb_model.pkl"
+StreamlitApp --> SVC : "memuat svm_model.pkl"
+
+@endum

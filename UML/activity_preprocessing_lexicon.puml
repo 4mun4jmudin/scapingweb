@@ -1,0 +1,30 @@
+@startuml
+title Activity Diagram - Preprocessing & Pelabelan Lexicon (Background Proses)
+
+|Sistem (Script Preprocessing)|
+start
+:Load Raw Dataset 'dataTwitter_20000.xlsx';
+:Seleksi kolom 'text' dan drop baris kosong;
+repeat
+    :Ambil baris teks tweet;
+    :Case folding (Ubah huruf menjadi kecil);
+    :Hapus URL, link, dan mention (@username);
+    :Hapus hashtag (#tag) dan angka;
+    :Hapus emoji dan tanda baca;
+    :Trim spasi berlebih;
+    :Hitung jumlah kata Positif berdasarkan kamus kata;
+    :Hitung jumlah kata Negatif berdasarkan kamus kata;
+    :Skor = Jumlah Kata Positif - Jumlah Kata Negatif;
+    if (Skor > 0) then (Ya)
+        :Set Label = 'Positif';
+    else if (Skor < 0) then (Ya)
+        :Set Label = 'Negatif';
+    else (Netral)
+        :Set Label = 'Netral';
+    endif
+repeat while (Masih ada data tweet?) is (Ya) not (Tidak)
+
+:Hapus baris data dengan Label 'Netral';
+:Simpan hasil ke file 'data_twitter_terlabeli.xlsx';
+stop
+@endum

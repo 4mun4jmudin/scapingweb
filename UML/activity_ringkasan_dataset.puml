@@ -1,0 +1,22 @@
+@startuml
+title Activity Diagram - Ringkasan Dataset & Wordcloud
+
+|Pengguna|
+start
+:Membuka halaman 'Ringkasan Dataset';
+
+|Dashboard Streamlit|
+:Membaca dataset 'data_twitter_terlabeli.xlsx';
+if (File dataset ada?) then (Ya)
+    :Menghitung statistik jumlah sentimen (Positif, Negatif);
+    :Membuat visualisasi grafik batang/kue (Plotly);
+    :Membuat Wordcloud berdasarkan kumpulan kata cleaned_text;
+    :Menampilkan visualisasi dan wordcloud ke layar;
+else (Tidak)
+    :Menampilkan pesan error 'Dataset tidak ditemukan';
+endif
+
+|Pengguna|
+:Melihat visualisasi distribusi sentimen & wordcloud;
+stop
+@endum

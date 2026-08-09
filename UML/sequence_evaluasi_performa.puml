@@ -1,0 +1,29 @@
+@startuml
+actor User
+boundary "app.py (UI)" as UI
+control "load_models()" as ModelLoader
+entity "Model Files (.pkl)" as PKL
+control "Evaluator Class / Scikit-learn" as Eval
+
+User -> UI : Pilih menu 'Evaluasi & Performa Model'
+activate UI
+
+UI -> ModelLoader : Panggil load_models()
+activate ModelLoader
+
+ModelLoader -> PKL : Load nb_model.pkl, svm_model.pkl, tfidf.pkl
+activate PKL
+PKL --> ModelLoader : Return loaded objects
+deactivate PKL
+
+ModelLoader --> UI : Return models (nb, svm, tfidf)
+deactivate ModelLoader
+
+UI -> Eval : Lakukan prediksi pada data testing
+activate Eval
+Eval --> UI : Return metrics (Akurasi, F1-Score, DLL.)
+deactivate Eval
+
+UI --> User : Tampilkan tabel performa & grafik perbandingan
+deactivate UI
+@endum

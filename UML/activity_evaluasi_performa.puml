@@ -1,0 +1,24 @@
+@startuml
+title Activity Diagram - Evaluasi & Performa Model
+
+|Pengguna|
+start
+:Membuka halaman 'Evaluasi & Performa Model';
+
+|Dashboard Streamlit|
+:Load model 'nb_model.pkl' & 'svm_model.pkl';
+:Load vectorizer 'tfidf.pkl';
+if (Semua model & vectorizer berhasil di-load?) then (Ya)
+    :Mengambil data testing (20%) dari dataset;
+    :Melakukan prediksi pada data testing;
+    :Menghitung nilai Akurasi, Precision, Recall, F1-Score;
+    :Membuat tabel perbandingan performa Naive Bayes vs SVM;
+    :Menampilkan metrics perbandingan di layar;
+else (Tidak)
+    :Menampilkan pesan error 'Model tidak ditemukan';
+endif
+
+|Pengguna|
+:Melihat tabel & chart perbandingan performa model;
+stop
+@endum

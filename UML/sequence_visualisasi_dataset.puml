@@ -1,0 +1,36 @@
+@startuml
+actor User
+boundary "app.py (UI)" as UI
+control "load_dataset()" as Cache
+entity "data_twitter_terlabeli.xlsx" as DB
+boundary "Plotly / Wordcloud Engine" as Vis
+
+User -> UI : Pilih menu 'Ringkasan Dataset'
+activate UI
+
+UI -> Cache : Panggil load_dataset()
+activate Cache
+
+Cache -> DB : Baca file Excel
+activate DB
+DB --> Cache : Return DataFrame
+deactivate DB
+
+Cache --> UI : Return Cached DataFrame
+deactivate Cache
+
+UI -> UI : Hitung jumlah label Positif & Negatif
+
+UI -> Vis : Generate Bar/Pie Chart
+activate Vis
+Vis --> UI : Return chart object
+deactivate Vis
+
+UI -> Vis : Generate Wordcloud (cleaned_text)
+activate Vis
+Vis --> UI : Return wordcloud image
+deactivate Vis
+
+UI --> User : Tampilkan Charts & Wordcloud
+deactivate UI
+@endum

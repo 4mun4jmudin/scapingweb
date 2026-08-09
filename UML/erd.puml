@@ -1,0 +1,19 @@
+@startuml
+title Entity Relationship Diagram (ERD) - Data Sentimen QRIS
+
+entity "Raw_Twitter_Data" as Raw {
+    * id_tweet : INTEGER <<PK>>
+    --
+    * text : TEXT (Teks tweet asli)
+}
+
+entity "Preprocessed_Twitter_Data" as Labeled {
+    * id_processed : INTEGER <<PK>>
+    --
+    * text : TEXT (Teks tweet asli)
+    * cleaned_text : TEXT (Teks bersih setelah cleansing)
+    * label : VARCHAR(10) (Positif / Negatif)
+}
+
+Raw ||--|| Labeled : "diproses menjadi"
+@endum

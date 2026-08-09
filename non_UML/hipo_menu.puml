@@ -1,0 +1,42 @@
+@startuml
+title Hierarchy Menu Diagram (HIPO) - Dashboard Sentimen
+
+skinparam rectangle {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+}
+
+rectangle "0.0 Dashboard Sentimen QRIS" as Main
+rectangle "1.0 Ringkasan Dataset" as Menu1
+rectangle "2.0 Evaluasi & Performa Model" as Menu2
+rectangle "3.0 Simulator Prediksi Live" as Menu3
+
+rectangle "1. DISTRIBUSI SENTIMEN (PIE/BAR)" as Sub1_1
+rectangle "2. WORDCLOUD OPINI" as Sub1_2
+rectangle "3. PREVIEW DATASET" as Sub1_3
+
+rectangle "1. AKURASI NAIVE BAYES" as Sub2_1
+rectangle "2. AKURASI SVM" as Sub2_2
+rectangle "3. TABEL COMPARISON METRICS" as Sub2_3
+
+rectangle "1. INPUT TEXT AREA" as Sub3_1
+rectangle "2. PROSES KLASIFIKASI" as Sub3_2
+rectangle "3. HASIL PREDIKSI BINER" as Sub3_3
+
+Main ---> Menu1
+Main ---> Menu2
+Main ---> Menu3
+
+Menu1 ---> Sub1_1
+Menu1 ---> Sub1_2
+Menu1 ---> Sub1_3
+
+Menu2 ---> Sub2_1
+Menu2 ---> Sub2_2
+Menu2 ---> Sub2_3
+
+Menu3 ---> Sub3_1
+Menu3 ---> Sub3_2
+Menu3 ---> Sub3_3
+
+@endum

@@ -1,0 +1,15 @@
+@startuml
+title Context Diagram (DFD Level 0) - Analisis Sentimen QRIS & Cashless
+
+left to right direction
+skinparam shadowing true
+skinparam DefaultFontName Arial
+
+actor "Pengguna (User)" as User
+
+rectangle "Sistem Analisis Sentimen QRIS (Proses 0)" as System {
+}
+
+User --> System : 1. Input teks opini/tweet\n2. Request ringkasan data & performa
+System --> User : 1. Hasil prediksi sentimen\n2. Visualisasi charts & performa model
+@endum

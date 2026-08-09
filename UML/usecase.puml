@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+skinparam packageStyle rect
+skinparam shadowing true
+
+actor "Pengguna (User)" as User
+
+rectangle "Dashboard Analisis Sentimen QRIS & Cashless" {
+    usecase "Mengakses Dashboard Streamlit" as UC1
+    usecase "Melihat Visualisasi Ringkasan Dataset" as UC2
+    usecase "Melihat Analisis Wordcloud Sentimen" as UC3
+    usecase "Melihat Evaluasi & Performa Model (NB vs SVM)" as UC4
+    usecase "Melakukan Simulasi Prediksi Sentimen Live" as UC5
+}
+
+User --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+UC1 ..> UC5 : <<include>>
+@endum

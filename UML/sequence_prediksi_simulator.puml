@@ -1,0 +1,34 @@
+@startuml
+actor User
+boundary "app.py (UI)" as UI
+control "clean_twitter_text()" as Prep
+control "tfidf (Vectorizer)" as TFIDF
+entity "nb_model.pkl (Naive Bayes)" as NB
+entity "svm_model.pkl (SVM)" as SVM
+
+User -> UI : Masukkan teks opini & Klik 'Prediksi'
+activate UI
+
+UI -> Prep : clean_twitter_text(input_text)
+activate Prep
+Prep --> UI : Cleaned Text
+deactivate Prep
+
+UI -> TFIDF : transform([Cleaned Text])
+activate TFIDF
+TFIDF --> UI : Teks Ter-Vektorisasi
+deactivate TFIDF
+
+UI -> NB : predict(Teks Ter-Vektorisasi)
+activate NB
+NB --> UI : Prediksi Kelas (Positif/Negatif)
+deactivate NB
+
+UI -> SVM : predict(Teks Ter-Vektorisasi)
+activate SVM
+SVM --> UI : Prediksi Kelas (Positif/Negatif)
+deactivate SVM
+
+UI --> User : Tampilkan Hasil Prediksi NB & SVM
+deactivate UI
+@endum
