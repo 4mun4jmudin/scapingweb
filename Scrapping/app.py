@@ -18,7 +18,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS untuk mempercantik Tampilan UI
+# Custom CSS untuk Tampilan UI
 st.markdown(
     """
     <style>
@@ -108,7 +108,7 @@ if page == "📊 Ringkasan Dataset":
             f"-{neg_count/total_data:.1%}",
             delta_color="inverse",
         )
-        col4.metric("Model Terbaik", "SVM", "95.65% Akurasi")
+        col4.metric("Model Terbaik", "SVM", "87.23% Akurasi")
 
         st.write("---")
 
@@ -180,7 +180,7 @@ elif page == "🤖 Evaluasi & Performa Model":
         "Analisis komparasi performa algoritma berdasarkan metrik klasifikasi standar."
     )
 
-    # Metrics dummy dari hasil pengujian nyata dataset Anda
+    # Metrics dari hasil pengujian nyata dataset Anda
     metrics_summary = pd.DataFrame(
         {
             "Metrik Evaluasi": [
@@ -190,16 +190,16 @@ elif page == "🤖 Evaluasi & Performa Model":
                 "F1-Score",
             ],
             "Multinomial Naive Bayes": [
-                "86.96%",
-                "88.00% / 85.00%",
-                "85.00% / 88.00%",
-                "86.50%",
+                "82.98%",
+                "78.13% / 93.33%",
+                "96.15% / 66.67%",
+                "82.00%",
             ],
             "Support Vector Machine (SVM)": [
-                "95.65%",
-                "96.00% / 95.00%",
-                "95.00% / 96.00%",
-                "95.50%",
+                "87.23%",
+                "83.33% / 94.12%",
+                "96.15% / 76.19%",
+                "86.75%",
             ],
         }
     )
@@ -213,16 +213,16 @@ elif page == "🤖 Evaluasi & Performa Model":
                 go.Bar(
                     name="Naive Bayes",
                     x=["Akurasi"],
-                    y=[0.8696],
-                    text=["86.96%"],
+                    y=[0.8298],
+                    text=["82.98%"],
                     textposition="auto",
                     marker_color="#FFA15A",
                 ),
                 go.Bar(
                     name="SVM (Linear)",
                     x=["Akurasi"],
-                    y=[0.9565],
-                    text=["95.65%"],
+                    y=[0.8723],
+                    text=["87.23%"],
                     textposition="auto",
                     marker_color="#19D3BF",
                 ),
