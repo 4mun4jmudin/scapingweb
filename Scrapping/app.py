@@ -68,7 +68,9 @@ if theme == "Dark Mode":
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label > div:first-child {
+    div[data-testid="stRadio"] [role="radiogroup"] label > div:not(:has([data-testid="stMarkdownContainer"])),
+    div[data-testid="stRadio"] [role="radiogroup"] label > span,
+    div[data-testid="stRadio"] [role="radiogroup"] label input[type="radio"] {
         display: none !important; /* Hide radio circles completely */
         width: 0 !important;
         height: 0 !important;
@@ -211,6 +213,40 @@ if theme == "Dark Mode":
         box-shadow: 0 6px 20px rgba(0, 173, 181, 0.4) !important;
     }
     
+    /* Professional static table styling (st.table) */
+    div[data-testid="stTable"] table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        background-color: #1e293b !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        border: 1px solid #334155 !important;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
+    }
+    div[data-testid="stTable"] th {
+        background-color: #111827 !important;
+        color: #00adb5 !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+        padding: 14px 18px !important;
+        border-bottom: 2px solid #334155 !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    div[data-testid="stTable"] td {
+        padding: 12px 18px !important;
+        border-bottom: 1px solid #334155 !important;
+        color: #f1f5f9 !important;
+        font-size: 0.9rem !important;
+    }
+    div[data-testid="stTable"] tr:last-child td {
+        border-bottom: none !important;
+    }
+    div[data-testid="stTable"] tr:hover {
+        background-color: rgba(255, 255, 255, 0.02) !important;
+    }
+    
     /* Dataframes and Tables */
     div.stDataFrame {
         border: 1px solid #1f2937 !important;
@@ -244,7 +280,9 @@ else:
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label > div:first-child {
+    div[data-testid="stRadio"] [role="radiogroup"] label > div:not(:has([data-testid="stMarkdownContainer"])),
+    div[data-testid="stRadio"] [role="radiogroup"] label > span,
+    div[data-testid="stRadio"] [role="radiogroup"] label input[type="radio"] {
         display: none !important; /* Hide radio circles completely */
         width: 0 !important;
         height: 0 !important;
@@ -293,7 +331,7 @@ else:
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3Cpath d='m9 11 2 2 4-4'%3E%3C/path%3E%3C/svg%3E") !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(3)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z'%3E%3C/path%3E%3Cpath d='m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z'%3E%3C/path%3E%3Cpath d='m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z'%3E%3C/path%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z'%3E%3C/path%3E%3Cpath d='m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z'%3E%3C/path%3E%3C/svg%3E") !important;
     }
     
     div[data-testid="stRadio"] [role="radiogroup"] label:hover {
@@ -385,6 +423,40 @@ else:
     div.stButton > button:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+    }
+    
+    /* Professional static table styling (st.table) */
+    div[data-testid="stTable"] table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        background-color: #ffffff !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05) !important;
+    }
+    div[data-testid="stTable"] th {
+        background-color: #f8fafc !important;
+        color: #0284c7 !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+        padding: 14px 18px !important;
+        border-bottom: 2px solid #e2e8f0 !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    div[data-testid="stTable"] td {
+        padding: 12px 18px !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        color: #0f172a !important;
+        font-size: 0.9rem !important;
+    }
+    div[data-testid="stTable"] tr:last-child td {
+        border-bottom: none !important;
+    }
+    div[data-testid="stTable"] tr:hover {
+        background-color: #f1f5f9 !important;
     }
     
     /* Dataframes and Tables */
@@ -667,7 +739,7 @@ elif page == "Evaluasi & Performa Model":
         st.write(
             """
         * **Kelebihan:** Proses komputasi/pelatihan sangat cepat, sangat efisien untuk dataset berskala besar, serta sensitif terhadap kata kunci eksplisit.
-        * **Kelemahan:** Membutuhkan waktu *training* yang lebih lama dibanding Naive Bayes jika ukuran dataset meloncat hingga ratusan ribu baris.
+        * **Kelemahan:** Memiliki *independency assumption* yang menganggap setiap kata berdiri sendiri. Mudah terkecoh oleh kalimat panjang yang mengandung banyak kata netral/pendukung.
         """
         )
 
