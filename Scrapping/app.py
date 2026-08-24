@@ -18,17 +18,112 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS untuk Tampilan UI
-st.markdown(
-    """
-    <style>
-    .main { padding: 1rem 2rem; }
-    .stMetric { background-color: #1e2130; padding: 15px; border-radius: 10px; border-left: 5px solid #00adb5; }
-    .css-1r650q1 { padding-top: 2rem; }
-    </style>
-""",
-    unsafe_allow_html=True,
+# Theme Selector in Sidebar
+theme = st.sidebar.select_slider(
+    "🌓 Tema Aplikasi",
+    options=["Dark Mode", "Light Mode"],
+    value="Dark Mode"
 )
+
+# Custom CSS with Smooth Transitions
+if theme == "Dark Mode":
+    theme_css = """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    
+    * {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease !important;
+    }
+    
+    /* Backgrounds */
+    .stApp {
+        background-color: #0b0f19 !important;
+        color: #f1f5f9 !important;
+    }
+    
+    [data-testid="stSidebar"] {
+        background-color: #111827 !important;
+        border-right: 1px solid #1f2937 !important;
+    }
+    
+    /* Metrics block styling */
+    div[data-testid="stMetric"] {
+        background-color: #1e293b !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+        border: 1px solid #334155 !important;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2) !important;
+    }
+    
+    div[data-testid="stMetricValue"] > div {
+        color: #00adb5 !important;
+    }
+    
+    div[data-testid="stMetricLabel"] > div {
+        color: #94a3b8 !important;
+    }
+    
+    /* Dataframes and Tables */
+    div.stDataFrame {
+        border: 1px solid #1f2937 !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Custom spacing */
+    .main { padding: 1rem 2rem; }
+    </style>
+    """
+else:
+    theme_css = """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    
+    * {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease !important;
+    }
+    
+    /* Backgrounds */
+    .stApp {
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
+    }
+    
+    [data-testid="stSidebar"] {
+        background-color: #ffffff !important;
+        border-right: 1px solid #e2e8f0 !important;
+    }
+    
+    /* Metrics block styling */
+    div[data-testid="stMetric"] {
+        background-color: #ffffff !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05) !important;
+    }
+    
+    div[data-testid="stMetricValue"] > div {
+        color: #0284c7 !important;
+    }
+    
+    div[data-testid="stMetricLabel"] > div {
+        color: #64748b !important;
+    }
+    
+    /* Dataframes and Tables */
+    div.stDataFrame {
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Custom spacing */
+    .main { padding: 1rem 2rem; }
+    </style>
+    """
+
+st.markdown(theme_css, unsafe_allow_html=True)
 
 
 # =====================================================================
@@ -151,17 +246,18 @@ if page == "📊 Ringkasan Dataset":
             )
             if text_subset.strip():
                 color_map = "Greens" if sentiment_type == "Positif" else "Reds"
+                bg_color = "#0b0f19" if theme == "Dark Mode" else "#ffffff"
                 wc = WordCloud(
                     width=600,
                     height=350,
-                    background_color="#0e1117",
+                    background_color=bg_color,
                     colormap=color_map,
                 ).generate(text_subset)
 
                 fig_wc, ax = plt.subplots(figsize=(6, 3.5))
                 ax.imshow(wc, interpolation="bilinear")
                 ax.axis("off")
-                fig_wc.patch.set_facecolor("#0e1117")
+                fig_wc.patch.set_facecolor(bg_color)
                 st.pyplot(fig_wc)
 
         st.write("---")
