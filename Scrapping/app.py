@@ -48,8 +48,14 @@ if theme == "Dark Mode":
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child {
-        display: none !important; /* Hide radio circles */
+    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child,
+    div[data-testid="stRadio"] [role="radiogroup"] label > div:not([data-testid="stMarkdownContainer"]),
+    div[data-testid="stRadio"] [role="radiogroup"] label > span {
+        display: none !important; /* Hide radio circles completely */
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] {
         gap: 10px !important;
@@ -59,7 +65,7 @@ if theme == "Dark Mode":
         background-color: #1e293b !important;
         border: 1px solid #334155 !important;
         border-radius: 12px !important;
-        padding: 12px 18px 12px 45px !important;
+        padding: 12px 18px 12px 48px !important;
         color: #94a3b8 !important;
         font-weight: 600 !important;
         font-size: 0.95rem !important;
@@ -74,7 +80,7 @@ if theme == "Dark Mode":
     div[data-testid="stRadio"] [role="radiogroup"] label::before {
         content: "" !important;
         position: absolute !important;
-        left: 16px !important;
+        left: 18px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 18px !important;
@@ -87,13 +93,13 @@ if theme == "Dark Mode":
     
     /* Assigning professional icons to menu items */
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(1)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='9' y1='17' x2='9' y2='9'%3E%3C/line%3E%3Cline x1='13' y1='17' x2='13' y2='5'%3E%3C/line%3E%3Cline x1='17' y1='17' x2='17' y2='13'%3E%3C/line%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='20' x2='18' y2='10'%3E%3C/line%3E%3Cline x1='12' y1='20' x2='12' y2='4'%3E%3C/line%3E%3Cline x1='6' y1='20' x2='6' y2='14'%3E%3C/line%3E%3C/svg%3E") !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(2)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z'%3E%3C/path%3E%3Cpath d='M12 6v6l4 2'%3E%3C/path%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3Cpath d='m9 11 2 2 4-4'%3E%3C/path%3E%3C/svg%3E") !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(3)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='5 3 19 12 5 21 5 3'%3E%3C/polygon%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z'%3E%3C/path%3E%3Cpath d='m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z'%3E%3C/path%3E%3Cpath d='m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z'%3E%3C/path%3E%3C/svg%3E") !important;
     }
     
     div[data-testid="stRadio"] [role="radiogroup"] label:hover {
@@ -220,8 +226,14 @@ else:
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child {
-        display: none !important; /* Hide radio circles */
+    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child,
+    div[data-testid="stRadio"] [role="radiogroup"] label > div:not([data-testid="stMarkdownContainer"]),
+    div[data-testid="stRadio"] [role="radiogroup"] label > span {
+        display: none !important; /* Hide radio circles completely */
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] {
         gap: 10px !important;
@@ -231,7 +243,7 @@ else:
         background-color: #f1f5f9 !important;
         border: 1px solid #e2e8f0 !important;
         border-radius: 12px !important;
-        padding: 12px 18px 12px 45px !important;
+        padding: 12px 18px 12px 48px !important;
         color: #64748b !important;
         font-weight: 600 !important;
         font-size: 0.95rem !important;
@@ -246,7 +258,7 @@ else:
     div[data-testid="stRadio"] [role="radiogroup"] label::before {
         content: "" !important;
         position: absolute !important;
-        left: 16px !important;
+        left: 18px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
         width: 18px !important;
@@ -259,13 +271,13 @@ else:
     
     /* Assigning professional icons to menu items */
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(1)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='9' y1='17' x2='9' y2='9'%3E%3C/line%3E%3Cline x1='13' y1='17' x2='13' y2='5'%3E%3C/line%3E%3Cline x1='17' y1='17' x2='17' y2='13'%3E%3C/line%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='20' x2='18' y2='10'%3E%3C/line%3E%3Cline x1='12' y1='20' x2='12' y2='4'%3E%3C/line%3E%3Cline x1='6' y1='20' x2='6' y2='14'%3E%3C/line%3E%3C/svg%3E") !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(2)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z'%3E%3C/path%3E%3Cpath d='M12 6v6l4 2'%3E%3C/path%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3Cpath d='m9 11 2 2 4-4'%3E%3C/path%3E%3C/svg%3E") !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(3)::before {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='5 3 19 12 5 21 5 3'%3E%3C/polygon%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z'%3E%3C/path%3E%3Cpath d='m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z'%3E%3C/path%3E%3Cpath d='m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z'%3E%3C/path%3E%3C/svg%3E") !important;
     }
     
     div[data-testid="stRadio"] [role="radiogroup"] label:hover {
@@ -412,17 +424,35 @@ nb_model, svm_model, tfidf = load_models()
 # =====================================================================
 # 3. SIDEBAR NAVIGATION
 # =====================================================================
-st.sidebar.image(
-    "https://img.icons8.com/color/96/qris.png", width=80
-)  # Logo Opsional
-st.sidebar.title("📌 Navigasi Menu")
+# Custom Brand Header Logo instead of remote image
+st.sidebar.markdown(
+    """
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 25px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.08);">
+        <span style="font-size: 2.8rem; display: block; margin-bottom: 5px;">💳</span>
+        <h2 style="margin: 0; font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, #00adb5, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px;">QRIS SENTIMEN</h2>
+        <span style="font-size: 0.75rem; color: #64748b; font-weight: 500; display: block; margin-top: 2px;">Analisis Sentimen Opini Publik</span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.sidebar.markdown(
+    """
+    <div style="margin-bottom: -5px;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; opacity: 0.85;">Navigasi Menu</span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 page = st.sidebar.radio(
-    "Pilih Halaman:",
+    "Navigasi Menu", # Hiding text label since category header is used
     [
         "Ringkasan Dataset",
         "Evaluasi & Performa Model",
         "Simulator Prediksi Live",
     ],
+    label_visibility="collapsed"
 )
 
 st.sidebar.write("---")
@@ -633,7 +663,7 @@ elif page == "Evaluasi & Performa Model":
         st.write(
             """
         * **Kelebihan:** Proses komputasi/pelatihan sangat cepat, sangat efisien untuk dataset berskala besar, serta sensitif terhadap kata kunci eksplisit.
-        * **Kelemahan:** Membutuhkan waktu *training* yang lebih lama dibanding Naive Bayes jika ukuran dataset meloncat hingga ratusan ribu baris.
+        * **Kelemahan:** Memiliki *independency assumption* yang menganggap setiap kata berdiri sendiri. Mudah terkecoh oleh kalimat panjang yang mengandung banyak kata netral/pendukung.
         """
         )
 
