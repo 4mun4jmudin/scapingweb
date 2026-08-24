@@ -18,12 +18,32 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Theme Selector in Sidebar
-theme = st.sidebar.select_slider(
-    "🌓 Tema Aplikasi",
-    options=["Dark Mode", "Light Mode"],
-    value="Dark Mode"
+# Initialize theme in session state
+if "theme" not in st.session_state:
+    st.session_state.theme = "Dark Mode"
+
+# Theme Toggle Button (On/Off Icon)
+toggle_icon = "☀️" if st.session_state.theme == "Dark Mode" else "🌙"
+toggle_label = "Switch to Light Mode" if st.session_state.theme == "Dark Mode" else "Switch to Dark Mode"
+
+# Custom style for toggle button in sidebar to look neat
+st.sidebar.markdown(
+    """
+    <div style="margin-top: 10px; margin-bottom: -5px;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; opacity: 0.85;">Tema Aplikasi</span>
+    </div>
+    """,
+    unsafe_allow_html=True
 )
+
+if st.sidebar.button(f"{toggle_icon} {toggle_label}", use_container_width=True):
+    if st.session_state.theme == "Dark Mode":
+        st.session_state.theme = "Light Mode"
+    else:
+        st.session_state.theme = "Dark Mode"
+    st.rerun()
+
+theme = st.session_state.theme
 
 # Custom CSS with Smooth Transitions, Glassmorphism, and Interactive Sidebar tabs with SVG Icons
 if theme == "Dark Mode":
@@ -48,14 +68,9 @@ if theme == "Dark Mode":
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child,
-    div[data-testid="stRadio"] [role="radiogroup"] label > div:not([data-testid="stMarkdownContainer"]),
-    div[data-testid="stRadio"] [role="radiogroup"] label > span {
+    div[data-testid="stRadio"] [role="radiogroup"] label [data-testid="stMarker"],
+    div[data-testid="stRadio"] [role="radiogroup"] label input[type="radio"] {
         display: none !important; /* Hide radio circles completely */
-        width: 0 !important;
-        height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] {
         gap: 10px !important;
@@ -226,14 +241,9 @@ else:
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child,
-    div[data-testid="stRadio"] [role="radiogroup"] label > div:not([data-testid="stMarkdownContainer"]),
-    div[data-testid="stRadio"] [role="radiogroup"] label > span {
+    div[data-testid="stRadio"] [role="radiogroup"] label [data-testid="stMarker"],
+    div[data-testid="stRadio"] [role="radiogroup"] label input[type="radio"] {
         display: none !important; /* Hide radio circles completely */
-        width: 0 !important;
-        height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] {
         gap: 10px !important;
@@ -663,7 +673,7 @@ elif page == "Evaluasi & Performa Model":
         st.write(
             """
         * **Kelebihan:** Proses komputasi/pelatihan sangat cepat, sangat efisien untuk dataset berskala besar, serta sensitif terhadap kata kunci eksplisit.
-        * **Kelemahan:** Memiliki *independency assumption* yang menganggap setiap kata berdiri sendiri. Mudah terkecoh oleh kalimat panjang yang mengandung banyak kata netral/pendukung.
+        * **Kelemahan:** Membutuhkan waktu *training* yang lebih lama dibanding Naive Bayes jika ukuran dataset meloncat hingga ratusan ribu baris.
         """
         )
 
