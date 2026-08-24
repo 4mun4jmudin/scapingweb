@@ -68,9 +68,12 @@ if theme == "Dark Mode":
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label [data-testid="stMarker"],
-    div[data-testid="stRadio"] [role="radiogroup"] label input[type="radio"] {
+    div[data-testid="stRadio"] [role="radiogroup"] label > div:first-child {
         display: none !important; /* Hide radio circles completely */
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] {
         gap: 10px !important;
@@ -241,9 +244,12 @@ else:
     }
     
     /* Interactive Sidebar Navigation Tabs with Custom SVGs */
-    div[data-testid="stRadio"] [role="radiogroup"] label [data-testid="stMarker"],
-    div[data-testid="stRadio"] [role="radiogroup"] label input[type="radio"] {
+    div[data-testid="stRadio"] [role="radiogroup"] label > div:first-child {
         display: none !important; /* Hide radio circles completely */
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] {
         gap: 10px !important;
@@ -434,21 +440,9 @@ nb_model, svm_model, tfidf = load_models()
 # =====================================================================
 # 3. SIDEBAR NAVIGATION
 # =====================================================================
-# Custom Brand Header Logo instead of remote image
 st.sidebar.markdown(
     """
-    <div style="text-align: center; margin-top: 10px; margin-bottom: 25px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.08);">
-        <span style="font-size: 2.8rem; display: block; margin-bottom: 5px;">💳</span>
-        <h2 style="margin: 0; font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, #00adb5, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px;">QRIS SENTIMEN</h2>
-        <span style="font-size: 0.75rem; color: #64748b; font-weight: 500; display: block; margin-top: 2px;">Analisis Sentimen Opini Publik</span>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-st.sidebar.markdown(
-    """
-    <div style="margin-bottom: -5px;">
+    <div style="margin-top: 15px; margin-bottom: -5px;">
         <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; opacity: 0.85;">Navigasi Menu</span>
     </div>
     """,
