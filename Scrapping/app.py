@@ -34,24 +34,31 @@ st.markdown(
 # =====================================================================
 # 2. LOAD DATASET & MODEL
 # =====================================================================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @st.cache_data
 def load_dataset():
-    if os.path.exists("data_twitter_terlabeli.xlsx"):
-        return pd.read_excel("data_twitter_terlabeli.xlsx")
+    file_path = os.path.join(BASE_DIR, "data_twitter_terlabeli.xlsx")
+    if os.path.exists(file_path):
+        return pd.read_excel(file_path)
     return None
 
 
 @st.cache_resource
 def load_models():
     nb, svm, tfidf = None, None, None
-    if os.path.exists("nb_model.pkl"):
-        with open("nb_model.pkl", "rb") as f:
+    nb_path = os.path.join(BASE_DIR, "nb_model.pkl")
+    svm_path = os.path.join(BASE_DIR, "svm_model.pkl")
+    tfidf_path = os.path.join(BASE_DIR, "tfidf.pkl")
+    
+    if os.path.exists(nb_path):
+        with open(nb_path, "rb") as f:
             nb = pickle.load(f)
-    if os.path.exists("svm_model.pkl"):
-        with open("svm_model.pkl", "rb") as f:
+    if os.path.exists(svm_path):
+        with open(svm_path, "rb") as f:
             svm = pickle.load(f)
-    if os.path.exists("tfidf.pkl"):
-        with open("tfidf.pkl", "rb") as f:
+    if os.path.exists(tfidf_path):
+        with open(tfidf_path, "rb") as f:
             tfidf = pickle.load(f)
     return nb, svm, tfidf
 
