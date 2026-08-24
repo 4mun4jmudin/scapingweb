@@ -25,18 +25,18 @@ theme = st.sidebar.select_slider(
     value="Dark Mode"
 )
 
-# Custom CSS with Smooth Transitions
+# Custom CSS with Smooth Transitions and Glassmorphism
 if theme == "Dark Mode":
     theme_css = """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
     
     * {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease !important;
+        transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease !important;
     }
     
-    /* Backgrounds */
+    /* Backgrounds & Text */
     .stApp {
         background-color: #0b0f19 !important;
         color: #f1f5f9 !important;
@@ -47,44 +47,94 @@ if theme == "Dark Mode":
         border-right: 1px solid #1f2937 !important;
     }
     
+    /* Hero Banner Styling */
+    .hero-container {
+        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid #4338ca;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px -10px rgba(67, 56, 202, 0.4);
+    }
+    .hero-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.85);
+    }
+    
     /* Metrics block styling */
     div[data-testid="stMetric"] {
         background-color: #1e293b !important;
-        border-radius: 12px !important;
-        padding: 20px !important;
+        border-radius: 16px !important;
+        padding: 1.5rem !important;
         border: 1px solid #334155 !important;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2) !important;
+        transition: all 0.3s ease !important;
+    }
+    div[data-testid="stMetric"]:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3) !important;
     }
     
+    /* Individual Accent Borders */
+    div[data-testid="stMetric"]:nth-of-type(1) { border-left: 5px solid #00adb5 !important; }
+    div[data-testid="stMetric"]:nth-of-type(2) { border-left: 5px solid #10b981 !important; }
+    div[data-testid="stMetric"]:nth-of-type(3) { border-left: 5px solid #ef4444 !important; }
+    div[data-testid="stMetric"]:nth-of-type(4) { border-left: 5px solid #8b5cf6 !important; }
+    
     div[data-testid="stMetricValue"] > div {
-        color: #00adb5 !important;
+        color: #f1f5f9 !important;
+        font-weight: 700 !important;
     }
     
     div[data-testid="stMetricLabel"] > div {
         color: #94a3b8 !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Custom Streamlit Button Styling */
+    div.stButton > button {
+        background: linear-gradient(135deg, #00adb5 0%, #6366f1 100%) !important;
+        color: white !important;
+        border: none !important;
+        padding: 0.75rem 2rem !important;
+        font-weight: 600 !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 15px rgba(0, 173, 181, 0.25) !important;
+    }
+    div.stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(0, 173, 181, 0.4) !important;
     }
     
     /* Dataframes and Tables */
     div.stDataFrame {
         border: 1px solid #1f2937 !important;
-        border-radius: 8px !important;
+        border-radius: 12px !important;
     }
     
     /* Custom spacing */
-    .main { padding: 1rem 2rem; }
+    .main { padding: 1.5rem 2.5rem; }
+    hr { border-color: #1f2937 !important; }
     </style>
     """
 else:
     theme_css = """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
     
     * {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease !important;
+        transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease !important;
     }
     
-    /* Backgrounds */
+    /* Backgrounds & Text */
     .stApp {
         background-color: #f8fafc !important;
         color: #0f172a !important;
@@ -95,31 +145,81 @@ else:
         border-right: 1px solid #e2e8f0 !important;
     }
     
+    /* Hero Banner Styling */
+    .hero-container {
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid #bfdbfe;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 25px -10px rgba(59, 130, 246, 0.15);
+    }
+    .hero-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1e3a8a;
+        margin-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        color: #3b82f6;
+    }
+    
     /* Metrics block styling */
     div[data-testid="stMetric"] {
         background-color: #ffffff !important;
-        border-radius: 12px !important;
-        padding: 20px !important;
+        border-radius: 16px !important;
+        padding: 1.5rem !important;
         border: 1px solid #e2e8f0 !important;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05) !important;
+        transition: all 0.3s ease !important;
+    }
+    div[data-testid="stMetric"]:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
     }
     
+    /* Individual Accent Borders */
+    div[data-testid="stMetric"]:nth-of-type(1) { border-left: 5px solid #00adb5 !important; }
+    div[data-testid="stMetric"]:nth-of-type(2) { border-left: 5px solid #10b981 !important; }
+    div[data-testid="stMetric"]:nth-of-type(3) { border-left: 5px solid #ef4444 !important; }
+    div[data-testid="stMetric"]:nth-of-type(4) { border-left: 5px solid #8b5cf6 !important; }
+    
     div[data-testid="stMetricValue"] > div {
-        color: #0284c7 !important;
+        color: #0f172a !important;
+        font-weight: 700 !important;
     }
     
     div[data-testid="stMetricLabel"] > div {
         color: #64748b !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Custom Streamlit Button Styling */
+    div.stButton > button {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+        color: white !important;
+        border: none !important;
+        padding: 0.75rem 2rem !important;
+        font-weight: 600 !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25) !important;
+    }
+    div.stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
     }
     
     /* Dataframes and Tables */
     div.stDataFrame {
         border: 1px solid #e2e8f0 !important;
-        border-radius: 8px !important;
+        border-radius: 12px !important;
     }
     
     /* Custom spacing */
-    .main { padding: 1rem 2rem; }
+    .main { padding: 1.5rem 2.5rem; }
+    hr { border-color: #e2e8f0 !important; }
     </style>
     """
 
@@ -188,9 +288,14 @@ st.sidebar.info(
 # HALAMAN 1: RINGKASAN DATASET
 # =====================================================================
 if page == "📊 Ringkasan Dataset":
-    st.title("📊 Ringkasan Dataset & Analisis Opini")
     st.markdown(
-        "Overview distribusi data sentimen publik terhadap penggunaan QRIS dan pembayaran *cashless*."
+        """
+        <div class="hero-container">
+            <div class="hero-title">📊 Ringkasan Dataset & Analisis Opini</div>
+            <div class="hero-subtitle">Overview distribusi data sentimen publik terhadap penggunaan QRIS dan pembayaran cashless.</div>
+        </div>
+        """,
+        unsafe_allow_html=True
     )
 
     if df_data is not None:
@@ -215,7 +320,7 @@ if page == "📊 Ringkasan Dataset":
         st.write("---")
 
         # Row 2: Charts & Visualizations
-        c1, c2 = st.columns([1, 1])
+        c1, c2 = st.columns([1.2, 1])
 
         with c1:
             st.subheader("📈 Proporsi Sentimen")
@@ -224,10 +329,24 @@ if page == "📊 Ringkasan Dataset":
                 names="label",
                 hole=0.4,
                 color="label",
-                color_discrete_map={"Positif": "#2ecc71", "Negatif": "#e74c3c"},
+                color_discrete_map={"Positif": "#10b981", "Negatif": "#ef4444"},
             )
             fig_pie.update_traces(
                 textposition="inside", textinfo="percent+label"
+            )
+            fig_pie.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                font_family="Plus Jakarta Sans",
+                font_color="#f1f5f9" if theme == "Dark Mode" else "#0f172a",
+                margin=dict(l=20, r=20, t=40, b=20),
+                legend=dict(
+                    orientation="h",
+                    yanchor="bottom",
+                    y=-0.1,
+                    xanchor="center",
+                    x=0.5
+                )
             )
             st.plotly_chart(fig_pie, use_container_width=True)
 
@@ -278,9 +397,14 @@ if page == "📊 Ringkasan Dataset":
 # HALAMAN 2: EVALUASI & PERFORMA MODEL
 # =====================================================================
 elif page == "🤖 Evaluasi & Performa Model":
-    st.title("🤖 Perbandingan Model: Naive Bayes vs SVM")
     st.markdown(
-        "Analisis komparasi performa algoritma berdasarkan metrik klasifikasi standar."
+        """
+        <div class="hero-container">
+            <div class="hero-title">🤖 Perbandingan Model: Naive Bayes vs SVM</div>
+            <div class="hero-subtitle">Analisis komparasi performa algoritma berdasarkan metrik klasifikasi standar.</div>
+        </div>
+        """,
+        unsafe_allow_html=True
     )
 
     # Metrics dari hasil pengujian nyata dataset Anda
@@ -336,6 +460,12 @@ elif page == "🤖 Evaluasi & Performa Model":
             yaxis_range=[0, 1],
             height=350,
             margin=dict(l=20, r=20, t=30, b=20),
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font_family="Plus Jakarta Sans",
+            font_color="#f1f5f9" if theme == "Dark Mode" else "#0f172a",
+            xaxis=dict(showgrid=False),
+            yaxis=dict(showgrid=True, gridcolor="#1f2937" if theme == "Dark Mode" else "#e2e8f0"),
         )
         st.plotly_chart(fig_bar, use_container_width=True)
 
@@ -371,9 +501,14 @@ elif page == "🤖 Evaluasi & Performa Model":
 # HALAMAN 3: SIMULATOR PREDIKSI LIVE
 # =====================================================================
 elif page == "🔮 Simulator Prediksi Live":
-    st.title("🔮 Simulator Prediksi Sentimen Real-Time")
     st.markdown(
-        "Uji coba performa model secara langsung menggunakan input teks opini baru Anda."
+        """
+        <div class="hero-container">
+            <div class="hero-title">🔮 Simulator Prediksi Sentimen Real-Time</div>
+            <div class="hero-subtitle">Uji coba performa model secara langsung menggunakan input teks opini baru Anda.</div>
+        </div>
+        """,
+        unsafe_allow_html=True
     )
 
     if nb_model is not None and svm_model is not None and tfidf is not None:
