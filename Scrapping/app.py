@@ -25,7 +25,7 @@ theme = st.sidebar.select_slider(
     value="Dark Mode"
 )
 
-# Custom CSS with Smooth Transitions and Glassmorphism
+# Custom CSS with Smooth Transitions, Glassmorphism, and Interactive Sidebar tabs
 if theme == "Dark Mode":
     theme_css = """
     <style>
@@ -45,6 +45,50 @@ if theme == "Dark Mode":
     [data-testid="stSidebar"] {
         background-color: #111827 !important;
         border-right: 1px solid #1f2937 !important;
+    }
+    
+    /* Interactive Sidebar Navigation Tabs */
+    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child {
+        display: none !important; /* Hide radio circles */
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] {
+        gap: 10px !important;
+        padding-top: 10px !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label {
+        background-color: #1e293b !important;
+        border: 1px solid #334155 !important;
+        border-radius: 12px !important;
+        padding: 12px 18px !important;
+        color: #94a3b8 !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        width: 100% !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label:hover {
+        background-color: #334155 !important;
+        color: #ffffff !important;
+        border-color: #475569 !important;
+        transform: translateX(6px);
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"],
+    div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked) {
+        background: linear-gradient(135deg, #00adb5 0%, #6366f1 100%) !important;
+        border-color: #00adb5 !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 15px rgba(0, 173, 181, 0.35) !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p,
+    div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p {
+        color: #ffffff !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label div[data-testid="stMarkdownContainer"] p {
+        margin: 0 !important;
     }
     
     /* Hero Banner Styling */
@@ -143,6 +187,50 @@ else:
     [data-testid="stSidebar"] {
         background-color: #ffffff !important;
         border-right: 1px solid #e2e8f0 !important;
+    }
+    
+    /* Interactive Sidebar Navigation Tabs */
+    div[data-testid="stRadio"] [role="radiogroup"] label span:first-child {
+        display: none !important; /* Hide radio circles */
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] {
+        gap: 10px !important;
+        padding-top: 10px !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label {
+        background-color: #f1f5f9 !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        padding: 12px 18px !important;
+        color: #64748b !important;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+        width: 100% !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label:hover {
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        transform: translateX(6px);
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"],
+    div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked) {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+        border-color: #3b82f6 !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p,
+    div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p {
+        color: #ffffff !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label div[data-testid="stMarkdownContainer"] p {
+        margin: 0 !important;
     }
     
     /* Hero Banner Styling */
