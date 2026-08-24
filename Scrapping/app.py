@@ -25,7 +25,7 @@ theme = st.sidebar.select_slider(
     value="Dark Mode"
 )
 
-# Custom CSS with Smooth Transitions, Glassmorphism, and Interactive Sidebar tabs
+# Custom CSS with Smooth Transitions, Glassmorphism, and Interactive Sidebar tabs with SVG Icons
 if theme == "Dark Mode":
     theme_css = """
     <style>
@@ -47,7 +47,7 @@ if theme == "Dark Mode":
         border-right: 1px solid #1f2937 !important;
     }
     
-    /* Interactive Sidebar Navigation Tabs */
+    /* Interactive Sidebar Navigation Tabs with Custom SVGs */
     div[data-testid="stRadio"] [role="radiogroup"] label span:first-child {
         display: none !important; /* Hide radio circles */
     }
@@ -59,7 +59,7 @@ if theme == "Dark Mode":
         background-color: #1e293b !important;
         border: 1px solid #334155 !important;
         border-radius: 12px !important;
-        padding: 12px 18px !important;
+        padding: 12px 18px 12px 45px !important;
         color: #94a3b8 !important;
         font-weight: 600 !important;
         font-size: 0.95rem !important;
@@ -69,7 +69,33 @@ if theme == "Dark Mode":
         cursor: pointer !important;
         display: flex !important;
         align-items: center !important;
+        position: relative !important;
     }
+    div[data-testid="stRadio"] [role="radiogroup"] label::before {
+        content: "" !important;
+        position: absolute !important;
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 18px !important;
+        height: 18px !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: contain !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* Assigning professional icons to menu items */
+    div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(1)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='9' y1='17' x2='9' y2='9'%3E%3C/line%3E%3Cline x1='13' y1='17' x2='13' y2='5'%3E%3C/line%3E%3Cline x1='17' y1='17' x2='17' y2='13'%3E%3C/line%3E%3C/svg%3E") !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(2)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z'%3E%3C/path%3E%3Cpath d='M12 6v6l4 2'%3E%3C/path%3E%3C/svg%3E") !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(3)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='5 3 19 12 5 21 5 3'%3E%3C/polygon%3E%3C/svg%3E") !important;
+    }
+    
     div[data-testid="stRadio"] [role="radiogroup"] label:hover {
         background-color: #334155 !important;
         color: #ffffff !important;
@@ -82,6 +108,10 @@ if theme == "Dark Mode":
         border-color: #00adb5 !important;
         color: #ffffff !important;
         box-shadow: 0 4px 15px rgba(0, 173, 181, 0.35) !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"]::before,
+    div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked)::before {
+        filter: brightness(0) invert(1) !important; /* Turn SVG white */
     }
     div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p,
     div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p {
@@ -189,7 +219,7 @@ else:
         border-right: 1px solid #e2e8f0 !important;
     }
     
-    /* Interactive Sidebar Navigation Tabs */
+    /* Interactive Sidebar Navigation Tabs with Custom SVGs */
     div[data-testid="stRadio"] [role="radiogroup"] label span:first-child {
         display: none !important; /* Hide radio circles */
     }
@@ -201,7 +231,7 @@ else:
         background-color: #f1f5f9 !important;
         border: 1px solid #e2e8f0 !important;
         border-radius: 12px !important;
-        padding: 12px 18px !important;
+        padding: 12px 18px 12px 45px !important;
         color: #64748b !important;
         font-weight: 600 !important;
         font-size: 0.95rem !important;
@@ -211,7 +241,33 @@ else:
         cursor: pointer !important;
         display: flex !important;
         align-items: center !important;
+        position: relative !important;
     }
+    div[data-testid="stRadio"] [role="radiogroup"] label::before {
+        content: "" !important;
+        position: absolute !important;
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 18px !important;
+        height: 18px !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: contain !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* Assigning professional icons to menu items */
+    div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(1)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='9' y1='17' x2='9' y2='9'%3E%3C/line%3E%3Cline x1='13' y1='17' x2='13' y2='5'%3E%3C/line%3E%3Cline x1='17' y1='17' x2='17' y2='13'%3E%3C/line%3E%3C/svg%3E") !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(2)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z'%3E%3C/path%3E%3Cpath d='M12 6v6l4 2'%3E%3C/path%3E%3C/svg%3E") !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label:nth-of-type(3)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='5 3 19 12 5 21 5 3'%3E%3C/polygon%3E%3C/svg%3E") !important;
+    }
+    
     div[data-testid="stRadio"] [role="radiogroup"] label:hover {
         background-color: #e2e8f0 !important;
         color: #0f172a !important;
@@ -224,6 +280,10 @@ else:
         border-color: #3b82f6 !important;
         color: #ffffff !important;
         box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+    }
+    div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"]::before,
+    div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked)::before {
+        filter: brightness(0) invert(1) !important;
     }
     div[data-testid="stRadio"] [role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] p,
     div[data-testid="stRadio"] [role="radiogroup"] label:has(input:checked) div[data-testid="stMarkdownContainer"] p {
@@ -359,9 +419,9 @@ st.sidebar.title("📌 Navigasi Menu")
 page = st.sidebar.radio(
     "Pilih Halaman:",
     [
-        "📊 Ringkasan Dataset",
-        "🤖 Evaluasi & Performa Model",
-        "🔮 Simulator Prediksi Live",
+        "Ringkasan Dataset",
+        "Evaluasi & Performa Model",
+        "Simulator Prediksi Live",
     ],
 )
 
@@ -375,7 +435,7 @@ st.sidebar.info(
 # =====================================================================
 # HALAMAN 1: RINGKASAN DATASET
 # =====================================================================
-if page == "📊 Ringkasan Dataset":
+if page == "Ringkasan Dataset":
     st.markdown(
         """
         <div class="hero-container">
@@ -484,7 +544,7 @@ if page == "📊 Ringkasan Dataset":
 # =====================================================================
 # HALAMAN 2: EVALUASI & PERFORMA MODEL
 # =====================================================================
-elif page == "🤖 Evaluasi & Performa Model":
+elif page == "Evaluasi & Performa Model":
     st.markdown(
         """
         <div class="hero-container">
@@ -573,7 +633,7 @@ elif page == "🤖 Evaluasi & Performa Model":
         st.write(
             """
         * **Kelebihan:** Proses komputasi/pelatihan sangat cepat, sangat efisien untuk dataset berskala besar, serta sensitif terhadap kata kunci eksplisit.
-        * **Kelemahan:** Memiliki *independency assumption* yang menganggap setiap kata berdiri sendiri. Mudah terkecoh oleh kalimat panjang yang mengandung banyak kata netral/pendukung.
+        * **Kelemahan:** Membutuhkan waktu *training* yang lebih lama dibanding Naive Bayes jika ukuran dataset meloncat hingga ratusan ribu baris.
         """
         )
 
@@ -588,7 +648,7 @@ elif page == "🤖 Evaluasi & Performa Model":
 # =====================================================================
 # HALAMAN 3: SIMULATOR PREDIKSI LIVE
 # =====================================================================
-elif page == "🔮 Simulator Prediksi Live":
+elif page == "Simulator Prediksi Live":
     st.markdown(
         """
         <div class="hero-container">
